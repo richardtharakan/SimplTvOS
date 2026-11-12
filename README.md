@@ -1,6 +1,6 @@
 # SimplTvOS
 
-A minimal, privacy-first Android TV launcher and wallpaper manager. No ads, no tracking, no internet permission — just a clean Home screen for your TV.
+A minimal, privacy-first Android TV shell access OS (no root required/adb) and wallpaper manager. No ads, no tracking, no internet permission — just a clean Home screen for your TV.
 
 ![License](https://img.shields.io/badge/license-MIT-green)
 ![Android](https://img.shields.io/badge/Android_TV-8.0%2B-brightgreen)
