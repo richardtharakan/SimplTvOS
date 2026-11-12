@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="#161D26"
+    android:padding="28dp">
+
+    <!-- Header -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="📥 Receive Photos Wirelessly"
+        android:textColor="#FFFFFF"
+        android:textSize="22sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:layout_marginBottom="20dp"
+        android:text="Send wallpapers directly from your phone or PC to this TV:"
+        android:textColor="#90A4AE"
+        android:textSize="13sp" />
+
+    <!-- Content: QR Code side-by-side with Instructions -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <!-- QR Code Card -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:background="#FFFFFF"
+            android:padding="12dp">
+
+            <ImageView
+                android:id="@+id/imgQrCode"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:scaleType="fitCenter" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="📷 Scan with Camera"
+                android:textColor="#1A237E"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!-- Step Instructions -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="24dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="1. Ensure your phone is connected to the same Wi-Fi."
+                android:textColor="#ECEFF1"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="2. Scan the QR code, or type this URL in any browser:"
+                android:textColor="#ECEFF1"
+                android:textSize="14sp" />
+
+            <!-- URL highlight box -->
+            <TextView
+                android:id="@+id/txtWebUrl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="#2600E5FF"
+                android:paddingStart="14dp"
+                android:paddingEnd="14dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:textColor="#00E5FF"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:text="http://192.168.1.7:8888" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="3. Tap 'Upload' to send photos instantly to your TV!"
+                android:textColor="#ECEFF1"
+                android:textSize="14sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Close Button -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:gravity="end">
+
+        <TextView
+            android:id="@+id/btnCloseQrDialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_action_bg"
+            android:focusable="true"
+            android:clickable="true"
+            android:paddingStart="24dp"
+            android:paddingEnd="24dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:text="Done"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,29 @@
+# Gradle
+.gradle/
+build/
+local.properties
+*.apk
+*.aab
+
+# IDE
+.idea/
+*.iml
+.DS_Store
+Thumbs.db
+
+# JVM crash logs
+hs_err_pid*.log
+replay_pid*.log
+
+# Python
+__pycache__/
+*.pyc
+tools/venv/
+
+# Local secrets
+tools/adbkey/
+backup/
+shots/
+work/
+traces/
+bench-results/

@@ -1,0 +1,651 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0C1017">
+
+    <!-- Main Content Container -->
+    <LinearLayout
+        android:id="@+id/mainContentContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingStart="40dp"
+        android:paddingEnd="40dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="16dp">
+
+        <!-- Top Header Bar with Tabs -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp">
+
+            <LinearLayout
+                android:id="@+id/headerTitleGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true">
+
+                <TextView
+                    android:id="@+id/appTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Wallpaper Manager"
+                    android:textColor="#FFFFFF"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <!-- Navigation Tabs -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginStart="24dp">
+
+                    <TextView
+                        android:id="@+id/tabWallpapers"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/tab_bg"
+                        android:focusable="true"
+                        android:clickable="true"
+                        android:nextFocusRight="@+id/tabBrowser"
+                        android:nextFocusDown="@+id/btnFullscreenPreview"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp"
+                        android:paddingTop="8dp"
+                        android:paddingBottom="8dp"
+                        android:text="🖼️ Wallpapers"
+                        android:textColor="#FFFFFF"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tabBrowser"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:background="@drawable/tab_bg"
+                        android:focusable="true"
+                        android:clickable="true"
+                        android:nextFocusLeft="@+id/tabWallpapers"
+                        android:nextFocusDown="@+id/btnFullscreenPreview"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp"
+                        android:paddingTop="8dp"
+                        android:paddingBottom="8dp"
+                        android:text="📂 Folders &amp; Files"
+                        android:textColor="#90A4AE"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Status Indicator / IP info -->
+            <TextView
+                android:id="@+id/txtHeaderSubtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:textColor="#00E5FF"
+                android:textSize="13sp"
+                android:text="Realme TV" />
+        </RelativeLayout>
+
+        <!-- VIEW 1: Wallpapers Gallery -->
+        <LinearLayout
+            android:id="@+id/viewWallpapers"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <!-- Wallpapers Action Bar -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="10dp">
+
+                <TextView
+                    android:id="@+id/wallpaperCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#1FFFFFFF"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:paddingTop="4dp"
+                    android:paddingBottom="4dp"
+                    android:text="29 active • 0 unselected"
+                    android:textColor="#00E676"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:id="@+id/btnFullscreenPreview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/btn_action_bg"
+                    android:focusable="true"
+                    android:clickable="true"
+                    android:nextFocusUp="@+id/tabWallpapers"
+                    android:nextFocusRight="@+id/btnSelectAll"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp"
+                    android:paddingTop="6dp"
+                    android:paddingBottom="6dp"
+                    android:text="👁️ Preview"
+                    android:textColor="#FFFFFF"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/btnSelectAll"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/btn_action_bg"
+                    android:focusable="true"
+                    android:clickable="true"
+                    android:nextFocusUp="@+id/tabWallpapers"
+                    android:nextFocusLeft="@+id/btnFullscreenPreview"
+                    android:nextFocusRight="@+id/btnUnselectAll"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp"
+                    android:paddingTop="6dp"
+                    android:paddingBottom="6dp"
+                    android:text="✓ Select All"
+                    android:textColor="#FFFFFF"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/btnUnselectAll"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/btn_action_bg"
+                    android:focusable="true"
+                    android:clickable="true"
+                    android:nextFocusUp="@+id/tabWallpapers"
+                    android:nextFocusLeft="@+id/btnSelectAll"
+                    android:nextFocusRight="@+id/btnSwitchOrder"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp"
+                    android:paddingTop="6dp"
+                    android:paddingBottom="6dp"
+                    android:text="✗ Unselect All"
+                    android:textColor="#FFFFFF"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/btnSwitchOrder"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/btn_action_bg"
+                    android:focusable="true"
+                    android:clickable="true"
+                    android:nextFocusUp="@+id/tabWallpapers"
+                    android:nextFocusLeft="@+id/btnUnselectAll"
+                    android:nextFocusRight="@+id/btnReceive"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp"
+                    android:paddingTop="6dp"
+                    android:paddingBottom="6dp"
+                    android:text="🔀 Mode: Random"
+                    android:textColor="#FFD54F"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/btnReceive"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/btn_action_bg"
+                    android:focusable="true"
+                    android:clickable="true"
+                    android:nextFocusUp="@+id/tabBrowser"
+                    android:nextFocusLeft="@+id/btnSwitchOrder"
+                    android:nextFocusRight="@+id/btnQuickShare"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp"
+                    android:paddingTop="6dp"
+                    android:paddingBottom="6dp"
+                    android:text="📥 Receive (Wi-Fi)"
+                    android:textColor="#00E5FF"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/btnQuickShare"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/btn_action_bg"
+                    android:focusable="true"
+                    android:clickable="true"
+                    android:nextFocusUp="@+id/tabBrowser"
+                    android:nextFocusLeft="@+id/btnReceive"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp"
+                    android:paddingTop="6dp"
+                    android:paddingBottom="6dp"
+                    android:text="📤 Quick Share"
+                    android:textColor="#FFFFFF"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/wallpaperGrid"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:clipToPadding="false"
+                android:scrollbars="vertical" />
+        </LinearLayout>
+
+        <!-- VIEW 2: Folders & Files Browser -->
+        <LinearLayout
+            android:id="@+id/viewBrowser"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <!-- Path Bar & Quick Shortcuts -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="8dp">
+
+                <TextView
+                    android:id="@+id/txtCurrentPath"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="#15FFFFFF"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp"
+                    android:paddingTop="6dp"
+                    android:paddingBottom="6dp"
+                    android:singleLine="true"
+                    android:ellipsize="start"
+                    android:textColor="#FFFFFF"
+                    android:textSize="13sp"
+                    android:text="/sdcard/Pictures/Wallpapers" />
+
+                <TextView
+                    android:id="@+id/btnNavUp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/btn_action_bg"
+                    android:focusable="true"
+                    android:clickable="true"
+                    android:nextFocusUp="@+id/tabBrowser"
+                    android:nextFocusRight="@+id/btnNavWallpapers"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp"
+                    android:paddingTop="6dp"
+                    android:paddingBottom="6dp"
+                    android:text="⬆️ Up"
+                    android:textColor="#FFFFFF"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/btnNavWallpapers"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/btn_action_bg"
+                    android:focusable="true"
+                    android:clickable="true"
+                    android:nextFocusUp="@+id/tabBrowser"
+                    android:nextFocusLeft="@+id/btnNavUp"
+                    android:nextFocusRight="@+id/btnNavUsb"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp"
+                    android:paddingTop="6dp"
+                    android:paddingBottom="6dp"
+                    android:text="🖼️ Wallpapers"
+                    android:textColor="#00E5FF"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/btnNavUsb"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/btn_action_bg"
+                    android:focusable="true"
+                    android:clickable="true"
+                    android:nextFocusUp="@+id/tabBrowser"
+                    android:nextFocusLeft="@+id/btnNavWallpapers"
+                    android:nextFocusRight="@+id/btnNavDownloads"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp"
+                    android:paddingTop="6dp"
+                    android:paddingBottom="6dp"
+                    android:text="💾 USB"
+                    android:textColor="#FFCA28"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/btnNavDownloads"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/btn_action_bg"
+                    android:focusable="true"
+                    android:clickable="true"
+                    android:nextFocusUp="@+id/tabBrowser"
+                    android:nextFocusLeft="@+id/btnNavUsb"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp"
+                    android:paddingTop="6dp"
+                    android:paddingBottom="6dp"
+                    android:text="📥 Downloads"
+                    android:textColor="#FFFFFF"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <!-- File Operations Bar: Copy, Cut, Paste, Add to Wallpapers, Delete -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="10dp">
+
+                <TextView
+                    android:id="@+id/txtSelectionCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#90A4AE"
+                    android:textSize="13sp"
+                    android:text="0 selected" />
+
+                <TextView
+                    android:id="@+id/btnSelectAllBrowser"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:background="@drawable/btn_action_bg"
+                    android:focusable="true"
+                    android:clickable="true"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp"
+                    android:paddingTop="6dp"
+                    android:paddingBottom="6dp"
+                    android:text="✓ Select All"
+                    android:textColor="#00E676"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/btnClearSelectionBrowser"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:background="@drawable/btn_action_bg"
+                    android:focusable="true"
+                    android:clickable="true"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp"
+                    android:paddingTop="6dp"
+                    android:paddingBottom="6dp"
+                    android:text="✗ Clear"
+                    android:textColor="#90A4AE"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:id="@+id/btnAddToWallpapers"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/btn_action_bg"
+                    android:focusable="true"
+                    android:clickable="true"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp"
+                    android:paddingTop="6dp"
+                    android:paddingBottom="6dp"
+                    android:text="⭐ Add to Wallpapers"
+                    android:textColor="#00E676"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/btnCopy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/btn_action_bg"
+                    android:focusable="true"
+                    android:clickable="true"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp"
+                    android:paddingTop="6dp"
+                    android:paddingBottom="6dp"
+                    android:text="📋 Copy"
+                    android:textColor="#FFFFFF"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/btnCut"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/btn_action_bg"
+                    android:focusable="true"
+                    android:clickable="true"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp"
+                    android:paddingTop="6dp"
+                    android:paddingBottom="6dp"
+                    android:text="✂️ Move"
+                    android:textColor="#FFFFFF"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/btnPaste"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/btn_action_bg"
+                    android:focusable="true"
+                    android:clickable="true"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp"
+                    android:paddingTop="6dp"
+                    android:paddingBottom="6dp"
+                    android:text="📥 Paste"
+                    android:textColor="#00E5FF"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/btnDeleteFiles"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/btn_action_bg"
+                    android:focusable="true"
+                    android:clickable="true"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp"
+                    android:paddingTop="6dp"
+                    android:paddingBottom="6dp"
+                    android:text="🗑️ Delete"
+                    android:textColor="#FF5252"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/browserRecycler"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:clipToPadding="false"
+                android:scrollbars="vertical" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Fullscreen Wallpaper Preview Overlay -->
+    <FrameLayout
+        android:id="@+id/fullscreenPreviewOverlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#000000"
+        android:clickable="true"
+        android:focusable="true"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/previewImageView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitCenter" />
+
+        <!-- Top Title Bar in Preview -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:background="#99000000"
+            android:paddingStart="32dp"
+            android:paddingEnd="32dp"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/previewImageTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:singleLine="true"
+                android:ellipsize="middle"
+                android:text="Wallpaper.jpg" />
+
+            <TextView
+                android:id="@+id/previewIndexText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#00E5FF"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:text="1 / 29" />
+        </LinearLayout>
+
+        <!-- Bottom Controls & Hints in Preview -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:background="#B3000000"
+            android:paddingStart="32dp"
+            android:paddingEnd="32dp"
+            android:paddingTop="14dp"
+            android:paddingBottom="14dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/previewControlsHint"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="#B0BEC5"
+                android:textSize="13sp"
+                android:text="◀ Left / Right ▶: Next / Prev  •  [BACK] Close Preview" />
+
+            <TextView
+                android:id="@+id/btnPreviewToggleActive"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:background="@drawable/btn_action_bg"
+                android:focusable="true"
+                android:clickable="true"
+                android:paddingStart="14dp"
+                android:paddingEnd="14dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:text="✓ Active in Rotation"
+                android:textColor="#00E676"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/btnPreviewSetCurrent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:background="@drawable/btn_action_bg"
+                android:focusable="true"
+                android:clickable="true"
+                android:paddingStart="14dp"
+                android:paddingEnd="14dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:text="⭐ Set Current"
+                android:textColor="#00E5FF"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/btnPreviewClose"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:background="@drawable/btn_action_bg"
+                android:focusable="true"
+                android:clickable="true"
+                android:paddingStart="14dp"
+                android:paddingEnd="14dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:text="✕ Close"
+                android:textColor="#FFFFFF"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </FrameLayout>
+</FrameLayout>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="4dp"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:focusable="true"
+    android:clickable="true"
+    android:background="@drawable/card_focus_bg"
+    android:padding="8dp">
+
+    <ImageView
+        android:id="@+id/fileIcon"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_folder" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_marginStart="12dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/fileName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:ellipsize="middle"
+            android:text="Folder / File Name"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/fileDetails"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:singleLine="true"
+            android:text="Details"
+            android:textColor="#90A4AE"
+            android:textSize="11sp" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/fileCheckbox"
+        android:layout_width="26dp"
+        android:layout_height="26dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:src="@drawable/ic_circle_outline"
+        android:visibility="gone" />
+
+</LinearLayout>

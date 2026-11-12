@@ -1,0 +1,38 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'com.gathin.wallpapermanager'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId 'com.gathin.wallpapermanager'
+        minSdk 26
+        targetSdk 28
+        versionCode 2
+        versionName '1.0.1'
+    }
+
+    lint {
+        abortOnError false
+        checkReleaseBuilds false
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            signingConfig signingConfigs.debug
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+}
+
+dependencies {
+    implementation 'androidx.recyclerview:recyclerview:1.3.2'
+    implementation 'io.nayuki:qrcodegen:1.8.0'
+}
