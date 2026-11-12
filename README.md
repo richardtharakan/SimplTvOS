@@ -1,4 +1,5 @@
-# SimplTvOS
+# SimplTvOS<img width="447" height="447" alt="somebody took my fucking bananas" src="https://github.com/user-attachments/assets/e6a1912d-8c66-433a-bd5e-3b5f57c9c606" />
+
 
 A minimal, privacy-first Android TV shell access OS (no root required/adb) and wallpaper manager. No ads, no tracking, no internet permission — just a clean Home screen for your TV.
 
@@ -161,7 +162,3 @@ Contributions are welcome! Feel free to open issues, submit pull requests, or su
 This project is licensed under the **MIT License** — see the [LICENSE](LICENSE) file for details.
 
 ---
-
-## 🙏 Acknowledgements
-
-Built on top of [CleanYourTV](https://github.com/Gathin23/cleanyourtv) — the open-source Android TV debloating project.
